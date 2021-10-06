@@ -2,21 +2,18 @@ using System;
 
 static class Badge
 {
+
+    private const string DefaultDepartment = "OWNER";
+
     public static string Print(int? id, string name, string? department)
     {
-        var idPrefix = string.Empty;
-        
-        if (id != null)
-        {
-            idPrefix = $"[{id}] - ";
-        }
 
-        var dpt = "OWNER";
-        if (department != null)
+        department = (department ?? DefaultDepartment).ToUpper();
+
+        return id.HasValue switch
         {
-            dpt = department.ToUpper();
-        }
-        
-        return $"{idPrefix}{name} - {dpt}";
+            true => $"[{id}] - {name} - {department}",
+            false => $"{name} - {department}"
+        };
     }
 }
