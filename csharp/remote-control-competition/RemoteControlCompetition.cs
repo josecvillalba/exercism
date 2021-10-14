@@ -17,15 +17,7 @@ public class ProductionRemoteControlCar: IRemoteControlCar, IComparable<Producti
         DistanceTravelled += 10;
     }
 
-    public int CompareTo(ProductionRemoteControlCar obj)
-    {
-        if (NumberOfVictories != obj.NumberOfVictories)
-        {
-            return NumberOfVictories > obj.NumberOfVictories ? 1 : -1;
-        }
-        return 0;
-    }
-    
+    public int CompareTo(ProductionRemoteControlCar obj) => NumberOfVictories - obj.NumberOfVictories;
 }
 
 public class ExperimentalRemoteControlCar: IRemoteControlCar
