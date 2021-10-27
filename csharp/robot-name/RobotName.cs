@@ -11,13 +11,15 @@ public class Robot
 
     public Robot() => Name = GetNewName();
 
+    private static string GenerateRobotName() => RandomAlphaString(2) + RandomNumberString(3);
+
     private static string GetNewName()
     {
-        var newName = RandomAlphaString(2) + RandomNumberString(3);
+        var newName = GenerateRobotName();
         
         while (SavedNames.Contains(newName))
         {
-            newName = RandomAlphaString(2) + RandomNumberString(3);            
+            newName = GenerateRobotName();
         }
 
         SavedNames.Add(newName);
